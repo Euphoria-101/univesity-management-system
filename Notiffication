@@ -1,0 +1,19 @@
+public abstract class Notification {
+
+    protected String recipient;
+    protected String message;
+
+    public Notification(String recipient, String message) {
+        this.recipient = recipient;
+        this.message = message;
+    }
+
+    // Simulate sending notification
+    public abstract void send();
+
+    // Return notification type
+    public abstract String getNotificationType();
+
+    // Format message content
+    public abstract String formatMessage();
+}
