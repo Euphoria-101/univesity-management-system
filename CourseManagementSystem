@@ -1,0 +1,122 @@
+package Main;
+public class CourseManagementSystem {
+
+    // ===== Person (Parent Class) =====
+    static class Person {
+        protected String name;
+        protected String email;
+
+        public Person(String name, String email) {
+            this.name = name;
+            this.email = email;
+        }
+    }
+
+    // ===== Student Class =====
+    static class Student extends Person {
+        private int studentId;
+
+        public Student(int studentId, String name, String email) {
+            super(name, email);
+            this.studentId = studentId;
+        }
+
+        public void displayStudent() {
+            System.out.println(
+                "ID: " + studentId +
+                ", Name: " + name +
+                ", Email: " + email
+            );
+        }
+    }
+
+    // ===== Announcement Class =====
+    static class Announcement {
+        private String message;
+
+        public Announcement(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
+
+    // ===== Course Class =====
+    static class Course {
+        private String courseName;
+        private Student[] students = new Student[3];          // 3 students
+        private Announcement[] announcements = new Announcement[5];
+
+        private int studentCount = 0;
+        private int announcementCount = 0;
+
+        public Course(String courseName) {
+            this.courseName = courseName;
+        }
+
+        public void addStudent(Student student) {
+            if (studentCount < students.length) {
+                students[studentCount++] = student;
+            } else {
+                System.out.println("Only 3 students allowed.");
+            }
+        }
+
+        public void addAnnouncement(Announcement announcement) {
+            if (announcementCount < announcements.length) {
+                announcements[announcementCount++] = announcement;
+            }
+        }
+
+        public void displayStudents() {
+            System.out.println("\nStudents Enrolled in " + courseName + ":");
+            for (int i = 0; i < studentCount; i++) {
+                students[i].displayStudent();
+            }
+        }
+
+        public void displayAnnouncements() {
+            System.out.println("\nCourse Announcements:");
+            for (int i = 0; i < announcementCount; i++) {
+                System.out.println("- " + announcements[i].getMessage());
+            }
+        }
+    }
+
+    // ===== Manager Class =====
+    static class Manager extends Person {
+
+        public Manager(String name, String email) {
+            super(name, email);
+        }
+
+        public void sendAnnouncement(Course course, String message) {
+            course.addAnnouncement(new Announcement(message));
+            System.out.println("Announcement sent by manager.");
+        }
+    }
+
+    // ===== Main Method =====
+    public static void main(String[] args) {
+
+        Manager manager = new Manager("Ali Manager", "manager@mail.com");
+
+        Course course = new Course("Object-Oriented Programming");
+
+        Student s1 = new Student(1, "Ahmed", "ahmed@mail.com");
+        Student s2 = new Student(2, "Sara", "sara@mail.com");
+        Student s3 = new Student(3, "John", "john@mail.com");
+
+        course.addStudent(s1);
+        course.addStudent(s2);
+        course.addStudent(s3);
+
+        manager.sendAnnouncement(course, "Welcome to the OOP course!");
+        manager.sendAnnouncement(course, "Final exam on Monday at 10 AM.");
+
+        course.displayStudents();
+        course.displayAnnouncements();
+    }
+}
