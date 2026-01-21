@@ -1,0 +1,22 @@
+public class EmailNotification extends Notification {
+
+    public EmailNotification(String recipient, String message) {
+        super(recipient, message);
+    }
+
+    @Override
+    public void send() {
+        System.out.println("Sending EMAIL to " + recipient);
+        System.out.println(formatMessage());
+    }
+
+    @Override
+    public String getNotificationType() {
+        return "Email Notification";
+    }
+
+    @Override
+    public String formatMessage() {
+        return "[EMAIL] Dear User,\n" + message + "\nRegards,\nUniversity System";
+    }
+}
