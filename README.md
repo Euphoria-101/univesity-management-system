@@ -1,4 +1,4 @@
-Students                                     Responsibilities
+Students                    :                 Responsibilities
 
 Abdelrahman Abubaker (29995/2025) - User Management - Create Student, Instructor, Admin classes
 
