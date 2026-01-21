@@ -1,0 +1,41 @@
+import Notification;
+import NotificationService;
+
+package absam;
+public class NotificationManager implements NotificationService {
+
+    @Override
+    public void sendNotification(Notification notification) {
+        notification.send();
+    }
+
+    @Override
+    public void notifyEnrollment(String studentId, String courseCode) {
+        Notification notification =
+                new EmailNotification();
+        sendNotification(notification);
+    }
+
+    @Override
+    public void notifyGradePosted(String studentId, String courseCode, String grade) {
+        Notification notification =
+                new InAppNotification(studentId,
+                        "Your grade for " + courseCode + " has been posted: " + grade);
+        sendNotification(notification);
+    }
+
+    @Override
+    public void notifyCourseDropped(String studentId, String courseCode) {
+        Notification notification =
+                new SMSNotification(studentId,
+                        "You have dropped the course " + courseCode + ".");
+        sendNotification(notification);
+    }
+
+    @Override
+    public void sendAnnouncement(String message) {
+        Notification notification =
+                new InAppNotification("ALL USERS", message);
+        sendNotification(notification);
+    }
+}
