@@ -10,7 +10,7 @@ Students                    :                 Responsibilities
 
 5. Absam Mohammed (24739/2024) - Notification System - Email, SMS, InApp notifications
 
-6. 27276/2024 29920/2025 - Reporting System - Various report types (Didn't do his work)
+6. 29920/2025 - Reporting System - Various report types (Didn't do his work)
 
 7. 27276/2024 - Authentication - Login and access control (Didn't do his work)
 
