@@ -2,7 +2,7 @@ Students                    :                 Responsibilities
 
 1. Abdelrahman Abubaker (29995/2025) - User Management - Create Student, Instructor, Admin classes
 
-2. Mohammed muzamel (33015/2025) - Course Management - Course CRUD operations
+2. Mohammed Muzamel (33015/2025) - Course Management - Course CRUD operations
 
 3. 29670/2025 - Enrollment System - Enrollment logic with validations (Didn't do his work)
 
