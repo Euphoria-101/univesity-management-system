@@ -1,0 +1,22 @@
+public class InAppNotification extends Notification {
+
+    public InAppNotification(String recipient, String message) {
+        super(recipient, message);
+    }
+
+    @Override
+    public void send() {
+        System.out.println("Sending IN-APP notification to " + recipient);
+        System.out.println(formatMessage());
+    }
+
+    @Override
+    public String getNotificationType() {
+        return "In-App Notification";
+    }
+
+    @Override
+    public String formatMessage() {
+        return "[IN-APP] " + message;
+    }
+}
