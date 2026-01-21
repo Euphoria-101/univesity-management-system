@@ -1,0 +1,12 @@
+public interface NotificationService {
+
+    void sendNotification(Notification notification);
+
+    void notifyEnrollment(String studentId, String courseCode);
+
+    void notifyGradePosted(String studentId, String courseCode, String grade);
+
+    void notifyCourseDropped(String studentId, String courseCode);
+
+    void sendAnnouncement(String message);
+}
