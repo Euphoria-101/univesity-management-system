@@ -1,0 +1,105 @@
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+/*
+import static org.junit.jupiter.api.Assertions.*;*/
+
+public class CourseTest {
+
+    private Course course;
+    private IllegalArgumentException assertThrows;
+
+
+    // ===============================
+    // Validation Tests
+    // ===============================
+
+    @Test
+    void testInvalidCredits() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Course("CS102", "Data Structures", "CS", "Dr. Lee", 0, 30);
+        });
+    }
+
+    @Test
+    void testInvalidCapacity() {
+        assertThrows = assertThrows(IllegalArgumentException.class, () -> {
+            Course course2 = new Course("CS103", "Algorithms", "CS", "Dr. Kim", 3, -5);
+        });
+    }
+
+    // ===============================
+    // isFull() Method Test
+    // ===============================
+
+    @Test
+    void testIsFull() {
+        assertFalse(course.isFull(), "Course should not be full initially");
+
+        course.addStudent("S1");
+        assertFalse(course.isFull(), "Course should not be full after one student");
+
+        course.addStudent("S2");
+        assertTrue(course.isFull(), "Course should be full when capacity is reached");
+    }
+
+    // ===============================
+    // addStudent() Method Test
+    // ===============================
+
+    @Test
+    void testAddStudent() {
+        assertTrue(course.addStudent("S1"), "Student S1 should be added");
+        assertTrue(course.addStudent("S2"), "Student S2 should be added");
+
+        // Course is now full
+        assertFalse(course.addStudent("S3"), "Should not add student when course is full");
+    }
+
+    @Test
+    void testAddDuplicateStudent() {
+        assertTrue(course.addStudent("S1"));
+        assertFalse(course.addStudent("S1"), "Duplicate student should not be added");
+    }
+
+    // ===============================
+    // removeStudent() Method Test
+    // ===============================
+
+    private void assertTrue(boolean student) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'assertTrue'");
+    }
+
+    @Test
+    void testRemoveStudent() {
+        course.addStudent("S1");
+
+        assertTrue(course.removeStudent("S1"), "Student should be removed successfully");
+        assertFalse(course.removeStudent("S2"), "Removing non-existing student should return false");
+    }
+
+    private void assertTrue(boolean removeStudent, String student_should_be_removed_successfully) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    private void assertFalse(boolean removeStudent, String removing_nonexisting_student_should_retur) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public IllegalArgumentException getAssertThrows() {
+        return assertThrows;
+    }
+
+    public void setAssertThrows(IllegalArgumentException assertThrows) {
+        this.assertThrows = assertThrows;
+    }
+}
