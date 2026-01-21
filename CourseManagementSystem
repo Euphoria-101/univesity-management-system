@@ -1,7 +1,7 @@
 package Main;
 public class CourseManagementSystem {
 
-    // ===== Person (Parent Class) =====
+    // Person (Parent Class)
     static class Person {
         protected String name;
         protected String email;
@@ -12,7 +12,7 @@ public class CourseManagementSystem {
         }
     }
 
-    // ===== Student Class =====
+    // Student Class
     static class Student extends Person {
         private int studentId;
 
@@ -30,7 +30,7 @@ public class CourseManagementSystem {
         }
     }
 
-    // ===== Announcement Class =====
+    // Announcement Class
     static class Announcement {
         private String message;
 
@@ -43,7 +43,7 @@ public class CourseManagementSystem {
         }
     }
 
-    // ===== Course Class =====
+    // Course Class
     static class Course {
         private String courseName;
         private Student[] students = new Student[3];          // 3 students
@@ -85,7 +85,7 @@ public class CourseManagementSystem {
         }
     }
 
-    // ===== Manager Class =====
+    // Manager Class
     static class Manager extends Person {
 
         public Manager(String name, String email) {
@@ -98,7 +98,7 @@ public class CourseManagementSystem {
         }
     }
 
-    // ===== Main Method =====
+    // Main Method
     public static void main(String[] args) {
 
         Manager manager = new Manager("Ali Manager", "manager@mail.com");
