@@ -1,0 +1,77 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class FilePersistenceApp {
+
+    private static final String FILE_NAME = "data.txt";
+
+    // Save data to file
+    public static void saveData(String name, int age) {
+        try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
+            writer.write("Name: " + name + ", Age: " + age + "\n");
+            System.out.println(" Data saved successfully.\n");
+        } catch (IOException e) {
+            System.out.println(" Error saving data.");
+            e.printStackTrace();
+        }
+    }
+
+    // Read data from file
+    public static void readData() {
+        try (BufferedReader reader = new BufferedReader(new  FileReader(FILE_NAME))) {
+            String line;
+            System.out.println("\nSaved Data:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            System.out.println();
+        } catch (FileNotFoundException e) {
+            System.out.println(" No data file found yet.\n");
+        } catch (IOException e) {
+            System.out.println(" Error reading data.");
+            e.printStackTrace();
+        }
+    }
+
+    // Main menu
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("===== FILE-BASED DATA PERSISTENCE =====");
+            System.out.println("1. Save Data");
+            System.out.println("2. Read Data");
+            System.out.println("3. Exit");
+            System.out.print("Choose an option: ");
+
+            choice = scanner.nextInt();
+            scanner.nextLine(); // clear buffer
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Enter age: ");
+                    int age = scanner.nextInt();
+
+                    saveData(name, age);
+                    break;
+
+                case 2:
+                    readData();
+                    break;
+
+                case 3:
+                    System.out.println(" Exiting program...");
+                    break;
+
+                default:
+                    System.out.println(" Invalid choice. Try again.\n");
+            }
+        } while (choice != 3);
+
+        scanner.close();
+    }
+}
